@@ -11,53 +11,107 @@
 <body>
     <!-- As a heading -->
     <nav class="navbar navbar-light bg-dark text-white text-center">
-        <span class="text-center text-white mx-auto p-2 h2">Weather Dashboard</span>
+        <span class="text-center text-white mx-auto p-2 h1 font-weight-bold">Weather Dashboard</span>
     </nav>
 
+    <!-- Main Section -->
     <div class="container-fluid ml-1 mr-0">
         <div class="row">
-            <div class="bg-light my-3 col-4">
+            <!-- Search Field and Searched Cities -->
+            <div class="bg-light my-3 col-3">
                 <div class="input-group">
-                    <label class="h5" for="city-seardch">Search for a City:</label>
+                    <label class="h4 font-weight-bold" for="city-seardch">Search for a City:</label>
                     <div class="input-group-append rounded">
                         <input id="user-input" type="text" class="form-control" aria-label="City Search" aria-describedby="button-addon2" value="">
                         <button class="btn bg-primary active btn-outline-primary text-white" type="button" id="submit"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
                 <div id="recent-cities">
-
+                    <ul class="list-group my-4">
+                        <li class="list-group-item p-3">Cras justo odio</li>
+                        <li class="list-group-item p-3">Dapibus ac facilisis in</li>
+                        <li class="list-group-item p-3">Morbi leo risus</li>
+                        <li class="list-group-item p-3">Porta ac consectetur ac</li>
+                        <li class="list-group-item p-3">Vestibulum at eros</li>
+                        <li class="list-group-item p-3">Cras justo odio</li>
+                        <li class="list-group-item p-3">Dapibus ac facilisis in</li>
+                        <li class="list-group-item p-3">Morbi leo risus</li>
+                        <li class="list-group-item p-3">Porta ac consectetur ac</li>
+                        <li class="list-group-item p-3">Vestibulum at eros</li>
+                      </ul>
                 </div>
             </div>
 
-            <div class="jumbotron jumbotron-fluid border border-secondary bg-white my-3 ml-3 p-3 col">
-                <h3 id="main-city" class="my-3"></h3>
-                <h5 class="my-3 text-secondary">Temperature:</h5>
-                <h5 class="my-3 text-secondary">Humidity:</h5>
-                <h5 class="my-3 text-secondary">Wind Speed:</h5>
-                <h5 class="my-3 text-secondary">UV Index:</h5>
-            </div>
-            <!-- <div class="container-fluid">
-                <div class="col">
-                    <h3>5-Day Forecast:</h3>
-                    <div class="row">
+            <!-- Current City Weather and 5-Day Forecast -->
+            <div class="col">
+                <div class="row">
+                    <div class="container jumbotron border bg-white my-3 ml-3 px-3 py-3 col">
+                        <h2 id="main-city" class="my-3 font-weight-bold text-dark">Atlanta (8/15/2019)<i class="fas fa-cloud"></i></h2>
+                        <h5 id="temperature" class="my-4 text-secondary">Temperature:</h5>
+                        <h5 id="humidity" class="my-4 text-secondary">Humidity:</h5>
+                        <h5 id="wind-speed" class="my-4 text-secondary">Wind Speed:</h5>
+                        <h5 id="uv-index" class="my-4 text-secondary">UV Index:</h5>
+                    </div>
+                </div>
+                <div class="row">
                         <div class="col">
-
-                        </div>
-                        <div class="col">
-
-                        </div>
-                        <div class="col">
-
-                        </div>
-                        <div class="col">
-
-                        </div>
-                        <div class="col">
-
+                            <h3>5-Day Forecast:</h3>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body bg-primary text-white rounded">
+                                          <h5 class="card-title">8/16/2019</h5>
+                                          <img src="" alt="">
+                                          <p>Temp:</p>
+                                          <p>Humidity:</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body bg-primary text-white rounded">
+                                          <h5 class="card-title">8/16/2019</h5>
+                                          <img src="" alt="">
+                                          <p>Temp:</p>
+                                          <p>Humidity:</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body bg-primary text-white rounded">
+                                            <h5 class="card-title">8/16/2019</h5>
+                                            <img src="" alt="">
+                                            <p>Temp:</p>
+                                            <p>Humidity:</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body bg-primary text-white rounded">
+                                            <h5 class="card-title">8/16/2019</h5>
+                                            <img src="" alt="">
+                                            <p>Temp:</p>
+                                            <p>Humidity:</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body bg-primary text-white rounded">
+                                          <h5 class="card-title">8/16/2019</h5>
+                                          <img src="" alt="">
+                                          <p>Temp:</p>
+                                          <p>Humidity:</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 
