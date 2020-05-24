@@ -3,19 +3,39 @@ $(document).ready(function() {
     const apiKey = '&units=imperial&APPID=c167a217ff93e0a818f3ac4d35414965';
     const currentWeather = 'https://api.openweathermap.org/data/2.5/weather?q='
     const fiveDay = 'https://api.openweathermap.org/data/2.5/forecast?q=';
-    const uvIndex = 'http://api.openweathermap.org/data/2.5/uvi?appid=c167a217ff93e0a818f3ac4d35414965'//&lat={lat}&lon=${}
+    const uvIndex = 'http://api.openweathermap.org/data/2.5/uvi?appid=c167a217ff93e0a818f3ac4d35414965';
     const currentDay = moment().format('l');
-    const day1= moment().add(1, 'days').format('l');
-    const day2= moment().add(2, 'days').format('l');
-    const day3= moment().add(3, 'days').format('l');
-    const day4= moment().add(4, 'days').format('l');
-    const day5= moment().add(5, 'days').format('l');
-    let userInput = $('#user-input').val();
+    const day1 = moment().add(1, 'days').format('l');
+    const day2 = moment().add(2, 'days').format('l');
+    const day3 = moment().add(3, 'days').format('l');
+    const day4 = moment().add(4, 'days').format('l');
+    const day5 = moment().add(5, 'days').format('l');
+    const userInputArray = [];
+    let citiesSearched = JSON.parse(localStorage.getItem('user-input'));
+
+    //Get Local Storage
+    function getLocalStorage() {       
+        if (localStorage.getItem('user-input') == null) {
+            localStorage.setItem('user-input', JSON.stringify(citiesSearched));
+        } else {
+            for (let i = 0; i < citiesSearched.length; i++) {
+                generateUserInput(citiesSearched[i]);
+                getWeather(citiesSearched[i]);
+            }
+            // citiesSearched.forEach(city => generateUserInput(city));
+        }
+
+        
+    }
+
+    getLocalStorage();
+    
+    
 
     // AJAX call for Current Weather and UV Index
-    function getWeather() {
+    function getWeather(userInput) {
         $.ajax({
-            url: currentWeather + $('#user-input').val() + apiKey,
+            url: currentWeather + userInput + apiKey,
             method: 'GET'
         }).then(response => {
             console.log(response);
@@ -106,12 +126,26 @@ $(document).ready(function() {
         $('#day-five-hum').text(`Humidity: ${response.daily[5].humidity}%`);
     }
 
+    //Function to Append User Input
+    function generateUserInput(userInput) {
+        let recentCities = $('<li>');
+        recentCities.addClass('list-group-item p-3');
+        recentCities.text(userInput);
+        $('#recent-cities').prepend(recentCities);
+    }
+
 
 
     $('#search').on('click', function() {
         event.preventDefault();
+        const input = $('#user-input');
+        const userInput = input.val();
+        userInputArray.push(userInput);
+        localStorage.setItem('user-input', JSON.stringify(userInputArray));
 
-        getWeather();
+        getWeather(userInput);
+        generateUserInput(userInput);
+        input.val('');
     });
 
 })
