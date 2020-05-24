@@ -135,7 +135,7 @@ $(document).ready(function() {
     }
 
 
-
+    //Click Event for Search Button
     $('#search').on('click', function() {
         event.preventDefault();
         const input = $('#user-input');
@@ -147,5 +147,12 @@ $(document).ready(function() {
         generateUserInput(userInput);
         input.val('');
     });
+
+    //Click Event for Previous Searched City to getWeather
+    $('.list-group-item').on('click', function() {
+        event.preventDefault();
+        let cityBtn = $(this).text();
+        getWeather(cityBtn);
+    })
 
 })
