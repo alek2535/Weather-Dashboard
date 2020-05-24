@@ -48,7 +48,7 @@ $(document).ready(function() {
             method: 'GET'
         }).then(response => {
             console.log(response);
-            $('#city-name').text(`${response.name} ${currentDay}`)
+            $('#city-name').text(`${response.name} (${currentDay})`)
             $('#icon-image').attr({
                 'src': `http://openweathermap.org/img/w/${response.weather[0].icon}.png`,
                 'alt': 'Weather Icon'});
