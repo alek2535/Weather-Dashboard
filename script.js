@@ -10,19 +10,28 @@ $(document).ready(function() {
     const day3 = moment().add(3, 'days').format('l');
     const day4 = moment().add(4, 'days').format('l');
     const day5 = moment().add(5, 'days').format('l');
-    const userInputArray = [];
-    let citiesSearched = JSON.parse(localStorage.getItem('user-input'));
+    let userInputArray = [];
+    let citiesSearched = [];
+    let pastCities = [];
+    
 
     //Get Local Storage
-    function getLocalStorage() {       
-        if (localStorage.getItem('user-input') == null) {
-            localStorage.setItem('user-input', JSON.stringify(citiesSearched));
+    function getLocalStorage() {  
+        citiesSearched = JSON.parse(localStorage.getItem('user-input'));
+
+        if (citiesSearched == null) {
+            pastCities = citiesSearched;
+            return pastCities;
         } else {
-            for (let i = 0; i < citiesSearched.length; i++) {
-                generateUserInput(citiesSearched[i]);
-                getWeather(citiesSearched[i]);
-            }
-            // citiesSearched.forEach(city => generateUserInput(city));
+            // for (let i = 0; i < citiesSearched.length; i++) {
+            //     let pastCities = citiesSearched[i];
+            //     generateUserInput(pastCities);
+            //     getWeather(pastCities);
+            // }
+            citiesSearched.forEach(city => {
+                generateUserInput(city);
+                getWeather(city);
+            });
         }
 
         
