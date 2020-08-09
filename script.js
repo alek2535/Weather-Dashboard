@@ -11,24 +11,22 @@ $(document).ready(function() {
     const day4 = moment().add(4, 'days').format('l');
     const day5 = moment().add(5, 'days').format('l');
     let userInputArray = [];
-    let citiesSearched = [];
-    let pastCities = [];
+    // let startCity = ['Los Angeles'];
     
 
     //Get Local Storage
     function getLocalStorage() {  
-        citiesSearched = JSON.parse(localStorage.getItem('user-input'));
-
-        if (citiesSearched == null) {
-            pastCities = citiesSearched;
-            return pastCities;
+        userInputArray = JSON.parse(localStorage.getItem('user-input'));
+        console.log(userInputArray);
+ 
+        if (userInputArray == null) {
+            userInputArray = ['Los Angeles'];
+            userInputArray.forEach(city => {
+                generateUserInput(city);
+                getWeather(city);
+            });
         } else {
-            // for (let i = 0; i < citiesSearched.length; i++) {
-            //     let pastCities = citiesSearched[i];
-            //     generateUserInput(pastCities);
-            //     getWeather(pastCities);
-            // }
-            citiesSearched.forEach(city => {
+            userInputArray.forEach(city => {
                 generateUserInput(city);
                 getWeather(city);
             });
@@ -149,7 +147,9 @@ $(document).ready(function() {
         event.preventDefault();
         const input = $('#user-input');
         const userInput = input.val();
+        console.log('This is user input array ', userInputArray);
         userInputArray.push(userInput);
+        console.log('this is the array now ', userInputArray);
         localStorage.setItem('user-input', JSON.stringify(userInputArray));
 
         getWeather(userInput);
@@ -158,9 +158,10 @@ $(document).ready(function() {
     });
 
     //Click Event for Previous Searched City to getWeather
-    $('.list-group-item').on('click', function() {
+    $('#recent-cities').on('click', 'li', function() {
         event.preventDefault();
         let cityBtn = $(this).text();
+        console.log(cityBtn);
         getWeather(cityBtn);
     })
 

@@ -37,6 +37,10 @@ THEN I am presented with the last searched city forecast
 
 ![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
 
+## Deployed Application
+
+[Weather Dashboard Application](https://alek2535.github.io/Weather-Dashboard/)
+
 ## Installation
 
 To access this project:
